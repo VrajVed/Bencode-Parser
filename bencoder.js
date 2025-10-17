@@ -42,14 +42,14 @@ class BencodeParser {
         let lengthStr = "";
 
         while (this.data[this.position] !== ":") {
-            lengthStr += this.data[this.position++];
+            lengthStr += this.data[this.position];
             this.position++;
         }
-
-        const length = parseInt(lengthStr, 10);
         this.position++;
-
+        const length = parseInt(lengthStr, 10);
         const str = this.data.substr(this.position, length);
+
+        
         this.position += length;
 
         return str;
@@ -77,7 +77,9 @@ class BencodeParser {
             ditionary[key] = value;
         }
 
-        this.position
+        this.position++;
+        return ditionary;
     }
 }
 
+export default BencodeParser;

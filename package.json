@@ -1,0 +1,21 @@
+{
+  "name": "bencoder",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000B\u0000e\u0000n\u0000c\u0000o\u0000d\u0000e\u0000-\u0000P\u0000a\u0000r\u0000s\u0000e\u0000r\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VrajVed/Bencode-Parser.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/VrajVed/Bencode-Parser/issues"
+  },
+  "homepage": "https://github.com/VrajVed/Bencode-Parser#readme"
+}
