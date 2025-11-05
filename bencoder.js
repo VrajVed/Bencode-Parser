@@ -4,6 +4,8 @@ class BencodeParser {
         this.position = 0;
     }
 
+
+    // DECODING LOGIC 
     parse() {
         return this.parseValue();
     }
@@ -79,6 +81,48 @@ class BencodeParser {
 
         this.position++;
         return ditionary;
+    }
+
+    // DECODING FUNCTIONALITY IN JAVASCRIPT
+
+    
+    static decode(bencodedString) {
+        const parser = new BencodeParser(bencodedString);
+        return parser.parse();
+    }
+
+
+    // ENCODING FUNCTIONALITY IN JAVASCRIPT
+
+
+    static encode(value) {
+        if (typeof value === 'number') {
+            return `i${value}e`
+        }
+        if (typeof value === 'string') {
+            return `${value.length}:${value}`;
+        }
+        if (Array.isArray(value)) {
+            let result = 'l';
+            for (let item of value) {
+                result += BencodeParser.encode(item);
+            }
+
+            result += 'e';
+            return result;
+        }
+        else if (typeof value === 'object') {
+            let result = 'd';
+            const keys = Object.keys(value).sort();
+            for (let key of keys) {
+                result += BencodeParser.encode(key);
+                result += BencodeParser.encode(value[key]);
+            }
+            result += 'e';
+            return result;
+        }
+
+        throw new Error("Unable to encode value of type " + typeof value);
     }
 }
 
